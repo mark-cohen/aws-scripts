@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# this script uses the awscli to destroy VPC endpoints with specific tags.
+# simply specify your profile, region, and tags, and test with --dry-run flag.
+# if tests return "Request would have succeeded, but DryRun flag is set", then
+# simply comment out the --dry-run flag to actually perform the operation, and destroy the endpoints.
+
 # specify AWS profile:
 PROFILE="your_aws_profile"
 # specify region:
@@ -17,10 +22,9 @@ echo "the following endpoints will be deleted: $ENDPOINTIDS"
 
 # delete endpoint(s)
 aws ec2 delete-vpc-endpoints \
-    --vpc-endpoint-ids $ENDPOINTIDS
+    --vpc-endpoint-ids $ENDPOINTIDS \
     --region $REGION \
     --profile $PROFILE \
-# test first with --dry-run flag, then remove or comment out
     --dry-run
 
 exit
