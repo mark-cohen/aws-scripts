@@ -4,6 +4,8 @@
 # simply specify your profile, region, and tags, and test with --dry-run flag.
 # if tests return "Request would have succeeded, but DryRun flag is set", then
 # simply comment out the --dry-run flag to actually perform the operation, and destroy the endpoints.
+# Note: upon successfully deleting endpoints the CLI will return "Unsuccessful", which appears to be a 
+# bug, as performing this operation DOES delete the endpoint(s).
 
 # specify AWS profile:
 PROFILE="your_aws_profile"
